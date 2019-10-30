@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        th td{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a asp-controller="Home" asp-action="Index">
+            <h1>
+                家庭数据中心
+            </h1>
+        </a>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

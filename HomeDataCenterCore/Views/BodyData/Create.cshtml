@@ -1,0 +1,150 @@
+﻿@model BodyDataViewModel
+
+<div>
+    <a asp-action="Index">
+        身体数据首页
+    </a>
+</div>
+<hr />
+<div>
+    <form asp-action="Create">
+        <table>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.RecordTime)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.RecordTime)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Shape)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Shape)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </td>
+                <td>
+                    @Html.EditorFor(model=>model.Weight)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BMI)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BMI)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BodyFatPercentage)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BodyFatPercentage)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BodyMoisture)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BodyMoisture)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SkeletalMuscleRate)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.MuscleMass)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MuscleMass)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BoneMass)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BoneMass)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.FatFreeBodyWeight)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Protein)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Protein)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.SubcutaneousFat)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SubcutaneousFat)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VisceralFatGrade)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.VisceralFatGrade)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BodyAge)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BodyAge)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.BasalMetabolism)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.BasalMetabolism)
+                </td>
+            </tr>
+
+        </table>
+        <button type="submit">保存</button>
+    </form>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BodyDataViewModel>
+
+    <div>
+        <a asp-action="Create">新增数据</a>
+        <hr />
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecordTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shape)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BMI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BodyFatPercentage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BodyMoisture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MuscleMass)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BoneMass)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Protein)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubcutaneousFat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VisceralFatGrade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BodyAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BasalMetabolism)
+                </th>
+            </tr>
+            @Html.DisplayForModel()
+        </table>
+    </div>
