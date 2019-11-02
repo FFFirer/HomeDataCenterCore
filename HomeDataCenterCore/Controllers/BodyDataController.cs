@@ -21,7 +21,7 @@ namespace HomeDataCenterCore.Controllers
         {
             ViewBag.Title = "身体数据 - 主页";
             Tuple<IEnumerable<BodyDataViewModel>, int> viewmodel = await _dal.GetAllBodyData();
-            return View(viewmodel.Item1);
+            return View(viewmodel.Item1.OrderBy(m => m.RecordTime));
         }
 
         [HttpGet]
