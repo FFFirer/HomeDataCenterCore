@@ -1,0 +1,13 @@
+﻿@using HomeDataCenterCore.Domain
+@model IEnumerable<PageLink>
+
+<div>
+    <ul>
+        @foreach (PageLink link in Model)
+        {
+            <li>
+                <a href=@link.url></a>
+            </li>
+        }
+    </ul>
+</div>

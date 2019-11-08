@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
+using HomeDataCenterCore.Services.DB;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using HomeDataCenterCore.Domain.AppSettings;
+using HomeDataCenterCore.Domain;
 using System.Threading.Tasks;
 using Dapper;
 using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
-using HomeDataCenterCore.Domain;
 
-namespace HomeDataCenterCore
+namespace HomeDataCenterCore.Services
 {
-    public class BodyDataDAL : IBodyDataDAL
+    public class BodyDataService : DbHelper, IBodyDataService
     {
-        public string ConnectString = "Data Source=192.168.1.6;Initial Catalog=HomeData;User ID=sa;Password=1qaz@WSX3edc";
+        private ILogger<BodyDataService> _logger;
+        public BodyDataService(ILogger<BodyDataService> logger, IOptionsMonitor<SqlConnectionOption> options):base(options, logger, "MssqlConnect")
+        {
+
+        }
 
         /// <summary>
-        /// 添加一条数据
+        /// 添加数据
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -44,7 +50,7 @@ namespace HomeDataCenterCore
 
                 try
                 {
-                    using (IDbConnection conn = new SqlConnection(ConnectString))
+                    using (IDbConnection conn = this.GetConnection())
                     {
                         int rows = conn.Execute(sql, parameters);
                         if (rows > 0)
@@ -62,10 +68,11 @@ namespace HomeDataCenterCore
                     return false;
                 }
             });
+
         }
 
         /// <summary>
-        /// 获取所有数据
+        /// 获取所有BodyData
         /// </summary>
         /// <returns></returns>
         public async Task<Tuple<IEnumerable<BodyDataViewModel>, int>> GetAllBodyData()
@@ -84,7 +91,7 @@ namespace HomeDataCenterCore
         }
 
         /// <summary>
-        /// 根据分页获取数据
+        /// 获取BodyData（分页）
         /// </summary>
         /// <param name="page"></param>
         /// <param name="count"></param>
