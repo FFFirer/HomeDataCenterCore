@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HomeDataCenterCore.Domain;
+using HomeDataCenterCore.Domain.ViewModels;
 
 namespace HomeDataCenterCore.ViewComponents
 {
@@ -16,32 +17,24 @@ namespace HomeDataCenterCore.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(Func<int, string> paging, PagingInfo pagingInfo)
         {
-            List<PageLink> urls = new List<PageLink>();
-            PageLink FirstLink = new PageLink()
+            PagingViewModel viewmodel = new PagingViewModel();
+            if(pagingInfo.CurrentPage == 1)
             {
-                url = paging(1),
-                Disable = pagingInfo.CurrentPage > 1 ? false : true
-            };
-            PageLink PreLink = new PageLink()
+                viewmodel.FirstUrl = string.Empty;
+            }
+            else
             {
-                url = (pagingInfo.CurrentPage - 1) < 1 ? "javascript(0);" : paging(pagingInfo.CurrentPage),
-                Disable = (pagingInfo.CurrentPage - 1) > 1 ? false : true
-            };
-            PageLink NextLink = new PageLink()
-            {
-                url = (pagingInfo.CurrentPage + 1) > pagingInfo.PageCount ? "javascript(0);" : paging(pagingInfo.CurrentPage + 1),
-                Disable = (pagingInfo.CurrentPage + 1) > pagingInfo.PageCount
-            };
-            PageLink LastLink = new PageLink()
-            {
-                url = pagingInfo.CurrentPage > pagingInfo.PageCount ? "javascript(0);" : paging(pagingInfo.PageCount),
-                Disable = (pagingInfo.CurrentPage + 1) > pagingInfo.PageCount
-            };
-            urls.Add(FirstLink);
-            urls.Add(PreLink);
-            urls.Add(NextLink);
-            urls.Add(LastLink);
-            return View(urls);
+                viewmodel.FirstUrl = paging(1);
+            }
+            viewmodel.FirstUrl = pagingInfo.CurrentPage == 1 ? string.Empty : paging(1);
+            viewmodel.PreLink = pagingInfo.CurrentPage <= 1 ? string.Empty : paging(pagingInfo.CurrentPage-1);
+            viewmodel.NextLink = pagingInfo.CurrentPage >= pagingInfo.PageCount ? string.Empty : paging(pagingInfo.CurrentPage + 1);
+            viewmodel.LastLink = pagingInfo.CurrentPage >= pagingInfo.PageCount ? string.Empty : paging(pagingInfo.PageCount);
+            viewmodel.Summary = $"共{pagingInfo.TotalCount}条记录,第{pagingInfo.CurrentPage}/{pagingInfo.PageCount}页";
+
+            
+
+            return View(viewmodel);
         }
     }
 }

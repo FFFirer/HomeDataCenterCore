@@ -12,12 +12,6 @@ namespace HomeDataCenterCore.Domain
         public int CurrentPage { get; set; } = 1;
         public int PageCount { get; set; } = 1;
         public int PageSize { get; set; } = 20;
-        
-    }
-
-    public class PageLink
-    {
-        public string url { get; set; }
-        public bool Disable { get; set; }
+        public int TotalCount { get; set; }
     }
 }
