@@ -6,18 +6,22 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using HomeDataCenterCore.Domain.AppSettings;
 using HomeDataCenterCore.Domain;
+using HomeDataCenterCore.Domain.ViewModels;
 using System.Threading.Tasks;
 using Dapper;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace HomeDataCenterCore.Services
 {
     public class BodyDataService : DbHelper, IBodyDataService
     {
         private ILogger<BodyDataService> _logger;
-        public BodyDataService(ILogger<BodyDataService> logger, IOptionsMonitor<SqlConnectionOption> options):base(options, logger, "MssqlConnect")
+        public BodyDataService(ILogger<BodyDataService> logger, IOptionsMonitor<SqlConnectionOption> options)
+            :base(options, logger, "HomeDataDb")
         {
-
+            _logger = logger;
         }
 
         /// <summary>
@@ -79,9 +83,8 @@ namespace HomeDataCenterCore.Services
         {
             return await Task.Factory.StartNew(() =>
             {
-
                 string sql = "select * from BodyData";
-                using (IDbConnection connection = new SqlConnection(ConnectString))
+                using (IDbConnection connection = this.GetConnection())
                 {
                     var data = connection.Query<BodyDataViewModel>(sql);
                     Tuple<IEnumerable<BodyDataViewModel>, int> result = new Tuple<IEnumerable<BodyDataViewModel>, int>(data, data.Count());
@@ -96,11 +99,54 @@ namespace HomeDataCenterCore.Services
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public async Task<Tuple<IEnumerable<BodyDataViewModel>, int>> GetAllBodyDataByPage(int page, int count)
+        public async Task<IEnumerable<BodyDataViewModel>> GetAllBodyDataByPage(int page, int count = 20)
         {
             return await Task.Factory.StartNew(() =>
             {
-                return new Tuple<IEnumerable<BodyDataViewModel>, int>(null, 0);
+                int ignoreRows = (page - 1) * count;
+                // 获取指定行数，以日期排序
+                string sql = "select top @count * from (select row_numbers over (order by RecordTime) as rows,* from BodyData) as b where b.rows>@ignoreRows";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("count", count);
+                parameters.Add("ignoreRows", ignoreRows);
+                try
+                {
+                    using (IDbConnection connection = this.GetConnection())
+                    {
+                        IEnumerable<BodyDataViewModel> result = connection.Query<BodyDataViewModel>(sql, parameters);
+                        return result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this._logger.LogError(ex, $"Query BodyData, page:{page}, count:{count}");
+                    return null;
+                }
+            });
+        }
+
+        /// <summary>
+        /// 获取BodyData总数
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> GetBodyDataCount()
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                string sql = "select count(1) from BodyData";
+                try
+                {
+                    using (IDbConnection connection = this.GetConnection())
+                    {
+                        int count = connection.Query<int>(sql).FirstOrDefault();
+                        return count;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this._logger.LogError(ex, "Query BodyData count");
+                    return 0;
+                }
             });
         }
     }

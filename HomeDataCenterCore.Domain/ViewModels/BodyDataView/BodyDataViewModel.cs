@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace HomeDataCenterCore.Domain
+namespace HomeDataCenterCore.Domain.ViewModels
 {
     /// <summary>
     /// 身体数据视图模型

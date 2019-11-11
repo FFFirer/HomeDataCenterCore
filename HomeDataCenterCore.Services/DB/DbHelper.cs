@@ -16,7 +16,6 @@ namespace HomeDataCenterCore.Services.DB
     /// </summary>
     public class DbHelper
     {
-        private SqlConnectionOption _dboption;
         private ILogger<DbHelper> _logger;
         private ConnectionOption _current;
 
@@ -33,23 +32,23 @@ namespace HomeDataCenterCore.Services.DB
         }
         public IDbConnection GetConnection()
         {
-            ConnectionOption current = _dboption[_current.ConnectionsString];
+            //ConnectionOption current = _dboption[_current.ConnectionsString];
 
             try
             {
-                switch (current.ProviderName)
+                switch (_current.ProviderName)
                 {
                     case "Mssql":
-                        return new SqlConnection(current.ConnectionsString);
+                        return new SqlConnection(_current.ConnectionsString);
                     case "Mysql":
-                        return new MySqlConnection(current.ConnectionsString);
+                        return new MySqlConnection(_current.ConnectionsString);
                     default:
                         throw new Exception("Not support this provider.Unkown provider.");
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex, $"不支持的ProviderName,{connectionName}.{current?.ProviderName}");
+                _logger.LogWarning(ex, $"不支持的ProviderName,{_current?.ProviderName}");
                 throw new Exception("Not support this provider.Unkown provider.");
             }
         }
