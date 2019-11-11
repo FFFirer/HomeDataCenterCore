@@ -1,0 +1,28 @@
+﻿@model HomeDataCenterCore.Domain.ViewModels.FilmDataViewModel
+
+<tr>
+    <th style="display:none;">
+        @Model.Id
+    </th>
+    <th>
+        @Model.Name
+    </th>
+    <th>
+        @Model.Country
+    </th>
+    <th>
+        @Model.Language
+    </th>
+    <th>
+        @Model.FilmType
+    </th>
+    <th>
+        @Model.PlayType
+    </th>
+    <th>
+        @Model.UserRating
+    </th>
+    <th>
+        @Html.ActionLink("详情", "Detail", "FilmData", new { Id = Model.Id})
+    </th>
+</tr>

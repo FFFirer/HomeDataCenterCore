@@ -12,11 +12,13 @@ namespace HomeDataCenterCore.Domain.ViewModels
 
     public class PagingViewModel
     {
-        public string FirstUrl { get; set; }
-        public string PreLink { get; set; }
-        public string NextLink { get; set; }
-        public string LastLink { get; set; }
-        public Dictionary<int, string> PageLinks { get; set; }
+        public string controller { get; set; }
+        public string action { get; set; }
+        public int FirstIndex { get; set; }
+        public int PreIndex { get; set; }
+        public int NextIndex { get; set; }
+        public int LastIndex { get; set; }
+        public Dictionary<int, string> PageLinks { get; set; } = new Dictionary<int, string>();
         public string Summary { get; set; }
     }
 }

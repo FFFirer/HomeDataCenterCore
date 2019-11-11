@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 using HomeDataCenterCore.Domain.AppSettings;
 using Microsoft.Extensions.Logging;
 
-namespace HomeDataCenterCore.Services.DB
+namespace HomeDataCenterCore.Services
 {
     /// <summary>
     /// 按需获取数据库连接
@@ -39,9 +39,9 @@ namespace HomeDataCenterCore.Services.DB
                 switch (_current.ProviderName)
                 {
                     case "Mssql":
-                        return new SqlConnection(_current.ConnectionsString);
+                        return new SqlConnection(_current.ConnectionString);
                     case "Mysql":
-                        return new MySqlConnection(_current.ConnectionsString);
+                        return new MySqlConnection(_current.ConnectionString);
                     default:
                         throw new Exception("Not support this provider.Unkown provider.");
                 }

@@ -36,7 +36,8 @@ namespace HomeDataCenterCore
                 logbuilder.AddNLog("NLog.config");
             });
             services.AddControllersWithViews();
-            services.AddScoped<IBodyDataDAL, BodyDataDAL>();
+            services.AddScoped<IBodyDataService, BodyDataService>();
+            services.AddScoped<IFilmDataService, FilmDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

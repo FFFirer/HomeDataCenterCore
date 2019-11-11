@@ -26,7 +26,7 @@ namespace HomeDataCenterCore.Domain.AppSettings
         /// <summary>
         /// 连接字符串
         /// </summary>
-        public string ConnectionsString { get; set; }
+        public string ConnectionString { get; set; }
         /// <summary>
         /// 提供程序："Mysql.Data.MysqlClient/System.Data.SqlClient"
         /// </summary>

@@ -16,7 +16,7 @@ ul.Paging li {
 }
 
 ul.Paging li:hover {
-    background-color: rgb(155, 155, 155);
+    border:1px solid black;
 }
 
 ul.Paging li input {

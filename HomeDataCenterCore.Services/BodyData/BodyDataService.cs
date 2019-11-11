@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HomeDataCenterCore.Services.DB;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using HomeDataCenterCore.Domain.AppSettings;
@@ -105,7 +104,7 @@ namespace HomeDataCenterCore.Services
             {
                 int ignoreRows = (page - 1) * count;
                 // 获取指定行数，以日期排序
-                string sql = "select top @count * from (select row_numbers over (order by RecordTime) as rows,* from BodyData) as b where b.rows>@ignoreRows";
+                string sql = @"SELECT TOP " + count + " * FROM (SELECT ROW_NUMBER() OVER(ORDER BY RecordTime) AS rows, * FROM dbo.BodyData) b WHERE b.rows>@ignoreRows";
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("count", count);
                 parameters.Add("ignoreRows", ignoreRows);

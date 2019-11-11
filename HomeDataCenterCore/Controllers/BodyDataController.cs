@@ -21,14 +21,18 @@ namespace HomeDataCenterCore.Controllers
         {
             ViewBag.Title = "身体数据 - 主页";
             int TotalCount = await _service.GetBodyDataCount();
-            IndexViewModel viewModel = new IndexViewModel();
+
+            // 分页信息
             PagingInfo pagingInfo = new PagingInfo();
             pagingInfo.TotalCount = TotalCount;
             pagingInfo.CurrentPage = page;
-            viewModel.paginginfo = pagingInfo;
+
             //Tuple<IEnumerable<BodyDataViewModel>, int> viewmodel = await _service.GetAllBodyData();
-            viewModel.BodyData = await _service.GetAllBodyDataByPage(page, pagingInfo.PageSize);
-            return View(viewmodel.Item1.OrderBy(m => m.RecordTime));
+            //viewModel.BodyData = await _service.GetAllBodyDataByPage(page, pagingInfo.PageSize);
+            //return View(viewmodel.Item1.OrderBy(m => m.RecordTime));
+            var data = await _service.GetAllBodyDataByPage(page, pagingInfo.PageSize);
+            ViewBag.PagingInfo = pagingInfo;
+            return View(data);
         }
 
         [HttpGet]

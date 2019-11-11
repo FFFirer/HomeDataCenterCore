@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<BodyDataViewModel>
 
+<h1>@ViewBag.Title</h1>
     <div>
         <a asp-action="Create">新增数据</a>
         <hr />
@@ -54,3 +55,6 @@
             @Html.DisplayForModel()
         </table>
     </div>
+    <hr />
+    <vc:page-link controller="BodyData" action="Index" paging-info="ViewBag.PagingInfo">
+    </vc:page-link>

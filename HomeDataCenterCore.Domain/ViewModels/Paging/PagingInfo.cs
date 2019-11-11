@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HomeDataCenterCore.Domain
+namespace HomeDataCenterCore.Domain.ViewModels
 {
     /// <summary>
     /// 分页信息
@@ -12,6 +12,18 @@ namespace HomeDataCenterCore.Domain
         public int CurrentPage { get; set; } = 1;
         public int PageCount { get; set; } = 1;
         public int PageSize { get; set; } = 20;
-        public int TotalCount { get; set; }
+        private int _totalcount { get; set; }
+        public int TotalCount
+        {
+            get
+            {
+                return _totalcount;
+            }
+            set
+            {
+                _totalcount = value;
+                PageCount = (int)Math.Ceiling((decimal)TotalCount / (decimal)PageSize);
+            }
+        }
     }
 }
