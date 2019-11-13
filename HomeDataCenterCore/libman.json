@@ -14,7 +14,7 @@
     {
       "provider": "unpkg",
       "library": "jquery@3.4.1",
-      "destination": "wwwroot/lib/jquery",
+      "destination": "wwwroot/lib/jquery/",
       "files": [
         "dist/jquery.js"
       ]
