@@ -15,4 +15,9 @@
     <ProjectReference Include="..\HomeDataCenterCore.Domain\HomeDataCenterCore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
 </Project>

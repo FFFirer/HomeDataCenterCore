@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<BodyDataViewModel>
 
+
+<div class="row">
     <div>
-        <a asp-action="Create">新增数据</a>
-        <hr />
-        <table>
+        <a class="btn btn-info" asp-action="Create">新增数据</a>
+    </div>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-bordered">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.RecordTime)
@@ -54,3 +58,4 @@
             @Html.DisplayForModel()
         </table>
     </div>
+</div>

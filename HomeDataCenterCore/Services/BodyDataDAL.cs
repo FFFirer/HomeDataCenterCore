@@ -12,7 +12,7 @@ namespace HomeDataCenterCore.Services
 {
     public class BodyDataDAL : IBodyDataDAL
     {
-        public string ConnectString = "Data Source=192.168.1.6;Initial Catalog=HomeData;User ID=sa;Password=1qaz@WSX3edc";
+        public string ConnectString = "Data Source=192.168.1.2;Initial Catalog=HomeData;User ID=sa;Password=1qaz@WSX3edc";
 
         /// <summary>
         /// 添加一条数据
