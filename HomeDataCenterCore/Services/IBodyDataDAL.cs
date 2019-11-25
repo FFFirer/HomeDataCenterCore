@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HomeDataCenterCore.Models;
 using HomeDataCenterCore.Domain;
 
-namespace HomeDataCenterCore.Services
+namespace HomeDataCenterCore
 {
     public interface IBodyDataDAL
     {

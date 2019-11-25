@@ -1,0 +1,66 @@
+﻿@using HomeDataCenterCore.Domain.ViewModels
+@model PagingViewModel
+
+<div>
+    <ul class="Paging" style="clear: both;">
+        <li>
+            @if (Model.FirstIndex == 0)
+            {
+                <a>首页</a>
+            }
+            else
+            {
+                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.FirstIndex">首页</a>
+            }
+        </li>
+        <li>
+            @if (Model.PreIndex == 0)
+            {
+                <a>上页</a>
+            }
+            else
+            {
+                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.PreIndex">上页</a>
+            }
+        </li>
+        @foreach (var pl in Model.PageLinks)
+        {
+
+            <li>
+                @if (string.IsNullOrEmpty(pl.Value))
+                {
+                    <a>@pl.Key</a>
+                }
+                else
+                {
+                    <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@pl.Key">@pl.Key</a>
+                }
+            </li>
+        }
+        <li>
+            @if (Model.NextIndex == 0)
+            {
+                <a>下页</a>
+            }
+            else
+            {
+                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.NextIndex">下页</a>
+            }
+        </li>
+        <li>
+            @if (Model.LastIndex == 0)
+            {
+                <a>末页</a>
+            }
+            else
+            {
+                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.LastIndex">末页</a>
+            }
+        </li>
+        <li>
+            <span>
+                @Model.Summary
+            </span>
+        </li>
+    </ul>
+</div>

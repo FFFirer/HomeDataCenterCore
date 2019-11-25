@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<BodyDataViewModel>
 
-
-<div class="row">
+<h1>@ViewBag.Title</h1>
     <div>
-        <a class="btn btn-info" asp-action="Create">新增数据</a>
-    </div>
-    <hr />
-    <div class="table-responsive">
-        <table class="table table-bordered">
+        <a asp-action="Create">新增数据</a>
+        <hr />
+        <table>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.RecordTime)
@@ -58,4 +55,6 @@
             @Html.DisplayForModel()
         </table>
     </div>
-</div>
+    <hr />
+    <vc:page-link controller="BodyData" action="Index" paging-info="ViewBag.PagingInfo">
+    </vc:page-link>

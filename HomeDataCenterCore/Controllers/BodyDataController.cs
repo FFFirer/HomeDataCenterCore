@@ -4,24 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HomeDataCenterCore.Services;
-using HomeDataCenterCore.Models;
 using HomeDataCenterCore.Domain;
+using HomeDataCenterCore.Domain.ViewModels;
 
 namespace HomeDataCenterCore.Controllers
 {
     public class BodyDataController : Controller
     {
-        private readonly IBodyDataDAL _dal;
-        public BodyDataController(IBodyDataDAL dal)
+        private readonly Services.IBodyDataService _service;
+        public BodyDataController(IBodyDataService service)
         {
-            _dal = dal;
+            _service = service;
         }
         // GET: /<controller>/
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             ViewBag.Title = "身体数据 - 主页";
-            Tuple<IEnumerable<BodyDataViewModel>, int> viewmodel = await _dal.GetAllBodyData();
-            return View(viewmodel.Item1.OrderBy(m => m.RecordTime));
+            int TotalCount = await _service.GetBodyDataCount();
+
+            // 分页信息
+            PagingInfo pagingInfo = new PagingInfo();
+            pagingInfo.TotalCount = TotalCount;
+            pagingInfo.CurrentPage = page;
+
+            //Tuple<IEnumerable<BodyDataViewModel>, int> viewmodel = await _service.GetAllBodyData();
+            //viewModel.BodyData = await _service.GetAllBodyDataByPage(page, pagingInfo.PageSize);
+            //return View(viewmodel.Item1.OrderBy(m => m.RecordTime));
+            var data = await _service.GetAllBodyDataByPage(page, pagingInfo.PageSize);
+            ViewBag.PagingInfo = pagingInfo;
+            return View(data);
         }
 
         [HttpGet]
@@ -40,7 +51,7 @@ namespace HomeDataCenterCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _dal.AddBodyData(model);
+                await _service.AddBodyData(model);
             }
             else
             {

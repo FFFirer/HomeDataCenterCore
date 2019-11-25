@@ -1,0 +1,25 @@
+﻿body {
+
+}
+
+/*
+    分页的样式
+*/
+ul.Paging {
+    display: inline-block;
+    list-style: none;
+}
+
+ul.Paging li {
+    display: inline;
+    font-size: 16px;
+}
+
+ul.Paging li:hover {
+    border:1px solid black;
+}
+
+ul.Paging li input {
+    width: 30px;
+    text-align: right;
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HomeDataCenterCore.Domain.ViewModels.FilmDataViewModel>
+
+<h1>@ViewBag.Title</h1>
+
+<div>
+
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="display:none">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Language)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FilmType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserRating)
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @Html.DisplayForModel()
+        </tbody>
+    </table>
+
+</div>
+<hr />
+<vc:page-link controller="FilmData" action="Index" paging-info="ViewBag.PagingInfo">
+</vc:page-link>
