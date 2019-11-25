@@ -17,6 +17,7 @@ namespace HomeDataCenterCore.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(string controller, string action, PagingInfo pagingInfo)
         {
+            // TODO:分页的样式需要修改
             PagingViewModel model = await Task.Factory.StartNew(() =>
             {
                 PagingViewModel viewmodel = new PagingViewModel();

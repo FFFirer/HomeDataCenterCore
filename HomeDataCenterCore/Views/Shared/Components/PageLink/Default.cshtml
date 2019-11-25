@@ -1,66 +1,77 @@
 ﻿@using HomeDataCenterCore.Domain.ViewModels
 @model PagingViewModel
 
-<div>
-    <ul class="Paging" style="clear: both;">
-        <li>
-            @if (Model.FirstIndex == 0)
-            {
-                <a>首页</a>
-            }
-            else
-            {
-                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.FirstIndex">首页</a>
-            }
+<ul class="pagination">
+    @if (Model.FirstIndex == 0)
+    {
+        <li class="page-item disabled">
+            <a class="page-link ">首页</a>
         </li>
-        <li>
-            @if (Model.PreIndex == 0)
-            {
-                <a>上页</a>
-            }
-            else
-            {
-                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.PreIndex">上页</a>
-            }
+    }
+    else
+    {
+        <li class="page-item">
+            <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.FirstIndex">首页</a>
         </li>
-        @foreach (var pl in Model.PageLinks)
-        {
+    }
+    @if (Model.PreIndex == 0)
+    {
+        <li class="page-item disabled">
+            <a class="page-link">上页</a>
+        </li>
+    }
+    else
+    {
+        <li class="page-item">
+            <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.PreIndex">上页</a>
+        </li>
+    }
 
-            <li>
-                @if (string.IsNullOrEmpty(pl.Value))
-                {
-                    <a>@pl.Key</a>
-                }
-                else
-                {
-                    <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@pl.Key">@pl.Key</a>
-                }
+    @foreach (var pl in Model.PageLinks)
+    {
+
+        @if (string.IsNullOrEmpty(pl.Value))
+        {
+            <li class="page-item active">
+                <a class="page-link">@pl.Key</a>
             </li>
         }
-        <li>
-            @if (Model.NextIndex == 0)
-            {
-                <a>下页</a>
-            }
-            else
-            {
-                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.NextIndex">下页</a>
-            }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@pl.Key">@pl.Key</a>
+            </li>
+        }
+
+    }
+    @if (Model.NextIndex == 0)
+    {
+        <li class="page-item disabled">
+            <a class="page-link">下页</a>
         </li>
-        <li>
-            @if (Model.LastIndex == 0)
-            {
-                <a>末页</a>
-            }
-            else
-            {
-                <a asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.LastIndex">末页</a>
-            }
+    }
+    else
+    {
+        <li class="page-item">
+            <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.NextIndex">下页</a>
         </li>
-        <li>
-            <span>
-                @Model.Summary
-            </span>
+    }
+
+    @if (Model.LastIndex == 0)
+    {
+        <li class="page-item disabled">
+            <a class="page-link">末页</a>
         </li>
-    </ul>
-</div>
+    }
+    else
+    {
+        <li class="page-item">
+            <a class="page-link" asp-controller="@Model.controller" asp-action="@Model.action" asp-route-page="@Model.LastIndex">末页</a>
+
+        </li>
+    }
+
+    <li class="page-item disabled">
+        <a class="page-link ">@Model.Summary</a>
+    </li>
+</ul>

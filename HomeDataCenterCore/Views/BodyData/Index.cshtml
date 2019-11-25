@@ -1,60 +1,81 @@
 ﻿@model IEnumerable<BodyDataViewModel>
 
-<h1>@ViewBag.Title</h1>
-    <div>
-        <a asp-action="Create">新增数据</a>
-        <hr />
-        <table>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecordTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Shape)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Weight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BMI)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BodyFatPercentage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BodyMoisture)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MuscleMass)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BoneMass)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Protein)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SubcutaneousFat)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VisceralFatGrade)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BodyAge)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BasalMetabolism)
-                </th>
-            </tr>
-            @Html.DisplayForModel()
+
+<div class="row">
+    <div class="col-12">
+        <h1>@ViewBag.Title</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <a class="btn btn-info" asp-action="Create">新增数据</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RecordTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Shape)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BMI)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BodyFatPercentage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BodyMoisture)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MuscleMass)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BoneMass)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Protein)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubcutaneousFat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VisceralFatGrade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BodyAge)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BasalMetabolism)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.DisplayForModel()
+            </tbody>
         </table>
     </div>
-    <hr />
-    <vc:page-link controller="BodyData" action="Index" paging-info="ViewBag.PagingInfo">
-    </vc:page-link>
+</div>
+<div class="row">
+    <div class="col-12">
+        <vc:page-link controller="BodyData" action="Index" paging-info="ViewBag.PagingInfo">
+        </vc:page-link>
+    </div>
+</div>
+
+<vc:page-link controller="BodyData" action="Index" paging-info="ViewBag.PagingInfo">
+</vc:page-link>
+
