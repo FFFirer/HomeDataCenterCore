@@ -1,151 +1,138 @@
 ﻿@model BodyDataViewModel
 
-<h1>@ViewBag.Title</h1>
-<div>
-    <a asp-action="Index">
-        身体数据首页
-    </a>
+<div class="row">
+    <div class="col-12">
+        <h1>@ViewBag.Title</h1>
+        <a class="btn-sm btn-info" asp-action="Index">
+            身体数据首页
+        </a>
+    </div>
 </div>
 <hr />
-<div>
-    <form asp-action="Create">
-        <table>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.RecordTime)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.RecordTime)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.Shape)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.Shape)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.Weight)
-                </td>
-                <td>
-                    @Html.EditorFor(model=>model.Weight)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BMI)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BMI)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BodyFatPercentage)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BodyFatPercentage)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BodyMoisture)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BodyMoisture)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.SkeletalMuscleRate)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.MuscleMass)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.MuscleMass)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BoneMass)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BoneMass)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.FatFreeBodyWeight)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.Protein)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.Protein)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.SubcutaneousFat)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.SubcutaneousFat)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.VisceralFatGrade)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.VisceralFatGrade)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BodyAge)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BodyAge)
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(model => model.BasalMetabolism)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.BasalMetabolism)
-                </td>
-            </tr>
-
-        </table>
-        <button type="submit">保存</button>
-    </form>
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Create">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.RecordTime)
+                    </span>
+                </div>
+                <input asp-for="RecordTime" class="form-control" type="datetime-local" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.Shape)
+                    </span>
+                </div>
+                <input asp-for="Shape" class="form-control" type="text" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </span>
+                </div>
+                <input asp-for="Weight" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BMI)
+                    </span>
+                </div>
+                <input asp-for="BMI" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BodyFatPercentage)
+                    </span>
+                </div>
+                <input asp-for="BodyFatPercentage" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BodyMoisture)
+                    </span>
+                </div>
+                <input asp-for="BodyMoisture" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.SkeletalMuscleRate)
+                    </span>
+                </div>
+                <input asp-for="SkeletalMuscleRate" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.MuscleMass)
+                    </span>
+                </div>
+                <input asp-for="MuscleMass" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BoneMass)
+                    </span>
+                </div>
+                <input asp-for="BoneMass" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.FatFreeBodyWeight)
+                    </span>
+                </div>
+                <input asp-for="FatFreeBodyWeight" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.Protein)
+                    </span>
+                </div>
+                <input asp-for="Protein" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.SubcutaneousFat)
+                    </span>
+                </div>
+                <input asp-for="SubcutaneousFat" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.VisceralFatGrade)
+                    </span>
+                </div>
+                <input asp-for="VisceralFatGrade" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BodyAge)
+                    </span>
+                </div>
+                <input asp-for="BodyAge" class="form-control" type="number" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        @Html.DisplayNameFor(model => model.BasalMetabolism)
+                    </span>
+                </div>
+                <input asp-for="BasalMetabolism" class="form-control" type="number" />
+            </div>
+            <button class="btn btn-primary" type="submit">保存</button>
+        </form>
+    </div>
 </div>

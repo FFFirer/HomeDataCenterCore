@@ -5,7 +5,7 @@
         @Model.Id
     </th>
     <th>
-        @Model.Name
+        @Html.ActionLink(Model.Name, "Detail", "FilmData", new { Id = Model.Id })
     </th>
     <th>
         @Model.Country
@@ -21,8 +21,5 @@
     </th>
     <th>
         @Model.UserRating
-    </th>
-    <th>
-        @Html.ActionLink("详情", "Detail", "FilmData", new { Id = Model.Id})
     </th>
 </tr>

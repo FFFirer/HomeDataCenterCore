@@ -1,12 +1,23 @@
 ﻿
-<div>
-    <ul>
-        <li>
-            <a asp-controller="BodyData" asp-action="Index">身体数据</a>
-        </li>
-
-        <li>
-            <a asp-controller="FilmData" asp-action="Index">电影数据</a>
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-12">
+        <div class="card mt-4 bg-light">
+            <div class="card-body">
+                <a asp-controller="BodyData" asp-action="Index">
+                    <h4 class="card-title">
+                        身体数据
+                    </h4>
+                </a>
+            </div>
+        </div>
+        <div class="card mt-4 bg-light">
+            <div class="card-body">
+                <a asp-controller="FilmData" asp-action="Index">
+                    <h4 class="card-title">
+                        电影数据
+                    </h4>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
