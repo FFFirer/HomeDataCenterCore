@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# 静态资源文件(js, css)
+/HomeDataCenterCore/wwwroot/lib/
