@@ -23,3 +23,10 @@ ul.Paging li input {
     width: 30px;
     text-align: right;
 }
+
+/*
+    bootstrap 分页 修改
+*/
+.pagination{
+    flex-wrap:wrap;
+}
